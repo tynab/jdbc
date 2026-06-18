@@ -1,13 +1,17 @@
 package bai_tap_nop.controller;
 
-import java.io.*;
+import java.io.IOException;
 
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import static bai_tap_nop.constant.Constant.*;
-
+/**
+ * Tóm tắt: Hiển thị trang thông tin người dùng sau đăng nhập và xử lý đăng xuất
+ * bằng cách hủy session hiện tại.
+ */
 @SuppressWarnings("serial")
 @WebServlet("/welcome")
 public class WelcomeController extends HttpServlet {
@@ -18,8 +22,10 @@ public class WelcomeController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		var session = req.getSession();
-		session.removeAttribute(SESSION_LOGIN);
+		var session = req.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
 		resp.sendRedirect(req.getContextPath() + "/login");
 	}
 }

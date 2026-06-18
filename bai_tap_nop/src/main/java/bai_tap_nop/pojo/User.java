@@ -1,22 +1,24 @@
 package bai_tap_nop.pojo;
 
+/**
+ * Tóm tắt: Đại diện cho người dùng đã đăng nhập. Session chỉ cần lưu email để
+ * nhận diện người dùng, không lưu lại mật khẩu.
+ */
 public class User {
-	private String userName;
-	private String password;
+	private String email;
 
-	public String getUserName() {
-		return userName;
+	public User() {
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public User(String email) {
+		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

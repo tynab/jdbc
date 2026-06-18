@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+/*
+ * Tóm tắt: Định dạng trang welcome với video nền, lớp phủ tối,
+ * thông tin người dùng ở giữa màn hình và nút đăng xuất.
+ */
+
 body {
     margin: 0;
     padding: 0;
@@ -81,10 +86,10 @@ body {
     position: relative;
 }
 
-.main .heading .btns a {
+.main .heading .btns button {
     color: #fff;
     text-align: center;
-    text-decoration: none;
+    background: transparent;
     font-family: 'cinzel', sans-serif;
     font-size: 15px;
     font-weight: 300;
@@ -100,9 +105,10 @@ body {
     margin-left: 1%;
     border-radius: 2px;
     transition: 0.5s ease-in-out;
+    cursor: pointer;
 }
 
-.main .heading .btns a:hover {
+.main .heading .btns button:hover {
     background: #017fb5;
     border: 1px solid #017fb5;
 }
