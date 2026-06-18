@@ -1,36 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%--
+	Tóm tắt: Form đăng nhập nhận email/mật khẩu và hiển thị lỗi do
+	LoginController truyền về khi thông tin không hợp lệ.
+--%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="./css/login.css">
 <title>Login</title>
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="login-box">
-		<h2>Login</h2>
-		<form action="" method="post" class="form">
+		<h2>Đăng nhập</h2>
+		<form action="${pageContext.request.contextPath}/login" method="post" class="form">
 			<div class="user-box">
-				<input type="text" name="username" required=""> <label>Username</label>
-				<!-- admin -->
+				<input type="email" name="email" autocomplete="email" required> <label>Email</label>
 			</div>
 			<div class="user-box">
-				<input type="password" name="password" required=""> <label>Password</label>
-				<!-- admin -->
+				<input type="password" name="password" autocomplete="current-password" required> <label>Mật khẩu</label>
 			</div>
-			<a href="javascript:$('form').submit()"> <span></span><span></span>
-				<span></span> <span></span> Submit
-			</a>
+			<button type="submit">
+				<span></span><span></span> <span></span><span></span> Đăng nhập
+			</button>
 		</form>
 	</div>
-	<c:if test="${not empty checkLogin}">
+	<c:if test="${not empty loginError}">
 		<script>
-			alert("Login Failed: Your user ID or password is incorrect");
+			alert("${loginError}");
 		</script>
 	</c:if>
 </body>
